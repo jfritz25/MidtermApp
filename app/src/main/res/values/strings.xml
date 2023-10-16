@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MidtermApp</string>
+    <string name="number_of_attempts">Number of attempts:</string>
+    <string name="_0">0</string>
+    <string name="enter_your_guess">"Enter your guess: "</string>
+    <string name="welcome_to_the_game">Welcome to the game</string>
+    <string name="play_game">Play Game</string>
+    <string name="view_high_scores">View High Scores</string>
+    <string name="player_name">"Player Name: "</string>
+</resources>

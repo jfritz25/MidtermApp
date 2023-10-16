@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MainFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <fragment
+        android:id="@+id/MainFragment"
+        android:name="com.example.midtermapp.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_main_to_game"
+            app:destination="@id/MainGameFragment" />
+        <action
+            android:id="@+id/action_main_to_hs"
+            app:destination="@id/HighScoreFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/MainGameFragment"
+        android:name="com.example.midtermapp.MainGameFragment"
+        android:label="fragment_main_game"
+        tools:layout="@layout/fragment_main_game">
+        <action
+            android:id="@+id/action_game_to_main"
+            app:destination="@id/MainFragment"/>
+        <argument
+            android:name="playerName"
+            app:argType="String"/>
+        <argument
+            android:name="score"
+            app:argType="String"/>
+
+    </fragment>
+
+</navigation>
