@@ -4,6 +4,24 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/MainFragment"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <fragment
+        android:id="@+id/MainGameFragment"
+        android:name="com.example.midtermapp.MainGameFragment"
+        android:label="fragment_main_game"
+        tools:layout="@layout/fragment_main_game">
+        <action
+            android:id="@+id/action_game_to_main"
+            app:destination="@id/MainFragment">
+            <argument
+                android:name="playerName"
+                app:argType="string" />
+            <argument
+                android:name="Score"
+                app:argType="string" />
+        </action>
+    </fragment>
+
     <fragment
         android:id="@+id/MainFragment"
         android:name="com.example.midtermapp.MainFragment"
@@ -15,23 +33,12 @@
         <action
             android:id="@+id/action_main_to_hs"
             app:destination="@id/HighScoreFragment" />
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/MainGameFragment"
-        android:name="com.example.midtermapp.MainGameFragment"
-        android:label="fragment_main_game"
-        tools:layout="@layout/fragment_main_game">
-        <action
-            android:id="@+id/action_game_to_main"
-            app:destination="@id/MainFragment"/>
         <argument
             android:name="playerName"
-            app:argType="String"/>
+            app:argType="string" />
         <argument
-            android:name="score"
-            app:argType="String"/>
+            android:name="Score"
+            app:argType="string" />
 
     </fragment>
 

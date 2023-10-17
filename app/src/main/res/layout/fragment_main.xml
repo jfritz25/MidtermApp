@@ -18,6 +18,7 @@
         android:layout_marginHorizontal="10dp"
         android:padding="10dp"
         android:layout_weight="1"
+        android:id="@+id/Welcome"
         android:textSize="40sp"/>
 
     <Button
