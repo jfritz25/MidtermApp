@@ -9,8 +9,8 @@ import androidx.room.PrimaryKey
 data class Score(
     @PrimaryKey(autoGenerate = true)
     var scoreId:  Long = 0L,
-    @ColumnInfo(name = "note_name")
-    var Player: String = "",
-    @ColumnInfo (name = "body")
-    var Score: String = ""
+    @ColumnInfo(name = "playerName")
+    var player: String = "",
+    @ColumnInfo (name = "score")
+    var score: String = ""
 )

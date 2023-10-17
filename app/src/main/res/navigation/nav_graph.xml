@@ -35,10 +35,24 @@
             app:destination="@id/HighScoreFragment" />
         <argument
             android:name="playerName"
+            android:defaultValue=""
             app:argType="string" />
         <argument
             android:name="Score"
+            android:defaultValue=""
             app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/HighScoreFragment"
+        android:name="com.example.midtermapp.HighScoreFragment"
+        android:label="hs_fragment"
+        tools:layout="@layout/fragment_highscore">
+
+        <action
+            android:id="@+id/action_hs_to_main"
+            app:destination="@id/MainFragment"/>
 
     </fragment>
 

@@ -1,0 +1,52 @@
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.example.midtermapp.Score
+import com.example.midtermapp.ScoreDiffItemCallback
+import com.example.midtermapp.databinding.RvLayoutBinding
+class HighScoreAdapter (val clickListener: (noteId: Long) -> Unit,
+                    val deleteClickListener: (noteId: Long) -> Unit)
+    : ListAdapter<Score, HighScoreAdapter.ScoreItemViewHolder>(ScoreDiffItemCallback()) {
+    /**
+     * The notesAdapter  allows us to communicate between two interfaces taht ae not compatible,
+     * in our case this is the view and the database by binding them to commnicate.
+     * This allows us to access the commands to the database in the ModelView.
+     *
+     * @param clickListener listening for if the note is pressed
+     * @param deleteClickListener listening for the action of the delete button being pressed
+     */
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
+            : ScoreItemViewHolder = ScoreItemViewHolder.inflateFrom(parent)
+    override fun onBindViewHolder(holder: ScoreItemViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(item, clickListener, deleteClickListener)
+    }
+
+
+    class ScoreItemViewHolder(val binding: RvLayoutBinding)
+        : RecyclerView.ViewHolder(binding.root) {
+
+        companion object {
+            // inflates the values from the NoteItem's viewholder
+            fun inflateFrom(parent: ViewGroup): ScoreItemViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = RvLayoutBinding.inflate(layoutInflater, parent, false)
+                return ScoreItemViewHolder(binding)
+            }
+        }
+
+        // binds the values together
+        fun bind(item: Score, clickListener: (noteId: Long) -> Unit,
+                 deleteClickListener: (noteId: Long) -> Unit) {
+            binding.score = item
+            binding.root.setOnClickListener { item.scoreId?.let { it1 -> clickListener(it1) } }
+            binding.xButton.setOnClickListener{ item.scoreId?.let { it1 ->
+                deleteClickListener(
+                    it1
+                )
+            } }
+        }
+    }
+}

@@ -28,14 +28,15 @@ class MainFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val args: MainFragmentArgs by navArgs()
-        val playerName = args.playerName
-        val score = args.score
+        var playerName = args.playerName
+        var score = args.score
+
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.lifecycleOwner = viewLifecycleOwner
 
         if(score != ""){
-            binding.Welcome.text = "$playerName score: $score \\n Play again? "
+            binding.Welcome.text = "$playerName score: ${score[0]} \n Play again? "
         }
 
         binding.PlayButton.setOnClickListener {

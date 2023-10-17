@@ -65,7 +65,7 @@ class GameFragment: Fragment() {
                 viewModel.SetName(binding.PlayerName.text.toString())
                 viewModel.sendToDB(dao)
 
-                val action = MainGameFragmentDirections.actionGameToMain(binding.PlayerName.text.toString(), viewModel.guesses.toString())
+                val action = MainGameFragmentDirections.actionGameToMain(binding.PlayerName.text.toString(), viewModel.guesses.value.toString())
                 findNavController().navigate(action)
             }
 
