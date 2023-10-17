@@ -11,20 +11,14 @@ import com.example.midtermapp.databinding.FragmentAttemptsBinding
 import com.example.midtermapp.databinding.FragmentGameBinding
 
 class AttemptsFragment: Fragment() {
+     /**
+     * This fragment is the bottom fragment of our GameScreen and increments guesses as they're entered
+     * */
     val TAG = "AttemptsFragment"
     private var _binding: FragmentAttemptsBinding? = null
     private val binding get() = _binding!!
 
      override fun onCreateView(
-    /**
-     * The onCreateView function is overridden to take the arguments from the noteId and set the view model
-     *
-     * @param inflater used to inflate the view model
-     * @param container used in the binding containing the view grop
-     * @param savedInstanceState holding the previous state of the object to reflect the current behaviors
-     *
-     * @returns the view
-     * */
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
 ): View? {
@@ -36,7 +30,9 @@ class AttemptsFragment: Fragment() {
     val viewModel = ViewModelProvider(
         requireActivity(), viewModelFactory).get(GameViewModel::class.java)
     binding.lifecycleOwner = viewLifecycleOwner
-
+         /**
+          * Sets the number of attempts based on changes in the guesses variable in the viewModel
+          */
      viewModel.guesses.observe(viewLifecycleOwner, Observer {
          it?.let {
              binding.NumOfAttempts.text = "Number of attempts: ${it}"
@@ -50,6 +46,9 @@ class AttemptsFragment: Fragment() {
 
 
 override fun onDestroyView() {
+    /**
+     * Sets binding to null when view is destroyed
+     */
     super.onDestroyView()
     _binding = null
 }

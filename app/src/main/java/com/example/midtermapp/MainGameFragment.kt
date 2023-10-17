@@ -8,6 +8,9 @@ import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 
 class MainGameFragment: Fragment() {
+    /**
+     * Holder fragment for our game screen
+     */
     override fun onCreateView(
         /**
          * The onCreateView function is overridden to take the arguments from the noteId and set the view model

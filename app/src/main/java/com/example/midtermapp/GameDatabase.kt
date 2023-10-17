@@ -13,7 +13,7 @@ import kotlinx.coroutines.internal.synchronized
 abstract class GameDatabase: RoomDatabase() {
     /**
      * Referencing the instance of the SQL Lite data base
-     * @returns an instance of the Notes database
+     * @returns an instance of the Scores database
      */
     abstract val gameDao: GameDao
     companion object {

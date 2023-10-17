@@ -6,15 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.midtermapp.Score
 import com.example.midtermapp.ScoreDiffItemCallback
 import com.example.midtermapp.databinding.RvLayoutBinding
-class HighScoreAdapter (
-                    val deleteClickListener: (noteId: Long) -> Unit)
+class HighScoreAdapter (val deleteClickListener: (noteId: Long) -> Unit)
     : ListAdapter<Score, HighScoreAdapter.ScoreItemViewHolder>(ScoreDiffItemCallback()) {
     /**
-     * The notesAdapter  allows us to communicate between two interfaces taht ae not compatible,
-     * in our case this is the view and the database by binding them to commnicate.
+     * The HighScoresAdapter  allows us to communicate between two interfaces that are not compatible,
+     * in our case this is the view and the database by binding them to communicate.
      * This allows us to access the commands to the database in the ModelView.
      *
-     * @param clickListener listening for if the note is pressed
      * @param deleteClickListener listening for the action of the delete button being pressed
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
@@ -28,7 +26,7 @@ class HighScoreAdapter (
         : RecyclerView.ViewHolder(binding.root) {
 
         companion object {
-            // inflates the values from the NoteItem's viewholder
+            // inflates the values from the ScoreItem's viewholder
             fun inflateFrom(parent: ViewGroup): ScoreItemViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = RvLayoutBinding.inflate(layoutInflater, parent, false)

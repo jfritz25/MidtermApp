@@ -11,6 +11,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.midtermapp.databinding.FragmentMainBinding
 
 class MainFragment: Fragment() {
+    /**
+     * This is our first screen displayed and presents the user two options, to play and to view highscores
+     */
     val TAG = "MainFragment"
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -34,7 +37,10 @@ class MainFragment: Fragment() {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.lifecycleOwner = viewLifecycleOwner
-
+    /**
+     * The following checks to see if the user had played once before, if they had it'll update the welcome text fragment
+     * to display their name and previous score
+     */
         if(score != ""){
             binding.Welcome.text = "$playerName score: ${score[0]} \n Play another game? "
         }

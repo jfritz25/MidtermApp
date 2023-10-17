@@ -14,12 +14,15 @@ import com.example.midtermapp.databinding.FragmentGameBinding
 import com.example.midtermapp.databinding.FragmentMainBinding
 
 class GameFragment: Fragment() {
+    /**
+     * This framgent is the top portion of our GameScreen it handles the guessing, entering of the player name, and checking of answers submitted
+     */
     val TAG = "GameFragment"
     private var _binding: FragmentGameBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         /**
-         * The onCreateView function is overridden to take the arguments from the noteId and set the view model
+         * The onCreateView function is overridden to take the arguments from the scoreId and set the view model
          *
          * @param inflater used to inflate the view model
          * @param container used in the binding containing the view grop
@@ -44,8 +47,11 @@ class GameFragment: Fragment() {
         val Wrong = MediaPlayer.create(context, R.raw.wrong)
 
 
-
-
+        /**
+         * This function runs whenever the ok button is pressed. It checks the guess, increments the guess plays a toast
+         *
+         * If the player is right the viewModel increments the guess, set's the player name, adds the score to the database, and navigates back home
+         */
         fun okPressed(){
             val guess = binding.Guess.text.toString().toInt()
 
@@ -71,6 +77,9 @@ class GameFragment: Fragment() {
 
         }
 
+        /**
+         * The following two functions increment/decrement the value in the edit text when the image buttons are pressed
+         */
         fun decrement(){
             if(binding.Guess.text.toString() != "") {
                 var newNum = binding.Guess.text.toString().toInt() - 1
@@ -85,7 +94,9 @@ class GameFragment: Fragment() {
             }
         }
 
-
+        /**
+         * Calls functions defined above using click listeners
+         */
         binding.minusbutton.setOnClickListener {
             decrement()
         }

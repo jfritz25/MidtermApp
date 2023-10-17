@@ -12,7 +12,7 @@ import androidx.room.Update
 interface GameDao {
     /**
      * Used as the interface working with the database to insert, delete and update the main data
-     * table holding the notes present
+     * table holding the scores present
      *
      */
     @Insert
