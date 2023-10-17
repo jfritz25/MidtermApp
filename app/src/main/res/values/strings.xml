@@ -7,4 +7,5 @@
     <string name="play_game">Play Game</string>
     <string name="view_high_scores">View High Scores</string>
     <string name="player_name">"Player Name: "</string>
+    <string name="back_to_main">Back to main</string>
 </resources>

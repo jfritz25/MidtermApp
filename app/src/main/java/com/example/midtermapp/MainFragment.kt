@@ -36,7 +36,7 @@ class MainFragment: Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         if(score != ""){
-            binding.Welcome.text = "$playerName score: ${score[0]} \n Play again? "
+            binding.Welcome.text = "$playerName score: ${score[0]} \n Play another game? "
         }
 
         binding.PlayButton.setOnClickListener {

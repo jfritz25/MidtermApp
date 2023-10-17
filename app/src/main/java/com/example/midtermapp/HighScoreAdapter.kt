@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.midtermapp.Score
 import com.example.midtermapp.ScoreDiffItemCallback
 import com.example.midtermapp.databinding.RvLayoutBinding
-class HighScoreAdapter (val clickListener: (noteId: Long) -> Unit,
+class HighScoreAdapter (
                     val deleteClickListener: (noteId: Long) -> Unit)
     : ListAdapter<Score, HighScoreAdapter.ScoreItemViewHolder>(ScoreDiffItemCallback()) {
     /**
@@ -21,9 +21,8 @@ class HighScoreAdapter (val clickListener: (noteId: Long) -> Unit,
             : ScoreItemViewHolder = ScoreItemViewHolder.inflateFrom(parent)
     override fun onBindViewHolder(holder: ScoreItemViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item, clickListener, deleteClickListener)
+        holder.bind(item, deleteClickListener)
     }
-
 
     class ScoreItemViewHolder(val binding: RvLayoutBinding)
         : RecyclerView.ViewHolder(binding.root) {
@@ -38,10 +37,8 @@ class HighScoreAdapter (val clickListener: (noteId: Long) -> Unit,
         }
 
         // binds the values together
-        fun bind(item: Score, clickListener: (noteId: Long) -> Unit,
-                 deleteClickListener: (noteId: Long) -> Unit) {
+        fun bind(item: Score, deleteClickListener: (noteId: Long) -> Unit) {
             binding.score = item
-            binding.root.setOnClickListener { item.scoreId?.let { it1 -> clickListener(it1) } }
             binding.xButton.setOnClickListener{ item.scoreId?.let { it1 ->
                 deleteClickListener(
                     it1

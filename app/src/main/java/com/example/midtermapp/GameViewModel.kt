@@ -31,8 +31,8 @@ class GameViewModel(dao: GameDao) : ViewModel() {
 
     fun sendToDB(dao: GameDao){
         val score = Score()
-        score.Player = playerName
-        score.Score = guesses.toString()
+        score.player = playerName
+        score.score = guesses.toString()
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 dao.insert(score)
