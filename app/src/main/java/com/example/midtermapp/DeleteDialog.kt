@@ -29,7 +29,7 @@ class DeleteDialog(val scoreId : Long,val clickListener: (scoreId: Long) -> Unit
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         AlertDialog.Builder(requireContext())
             .setMessage(getString(R.string.delete_confirmation))
-            .setPositiveButton(getString(R.string.yes)) { _,_ -> clickListener(noteId)}
+            .setPositiveButton(getString(R.string.yes)) { _,_ -> clickListener(scoreId)}
             .setNegativeButton(getString(R.string.no)) { _,_ -> }
 
             .create()

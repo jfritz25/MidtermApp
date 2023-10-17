@@ -72,13 +72,17 @@ class GameFragment: Fragment() {
         }
 
         fun decrement(){
-            var newNum = binding.Guess.text.toString().toInt()-1
-            binding.Guess.setText(newNum.toString())
+            if(binding.Guess.text.toString() != "") {
+                var newNum = binding.Guess.text.toString().toInt() - 1
+                binding.Guess.setText(newNum.toString())
+            }
         }
 
-        fun increment(){
-            var newNum = binding.Guess.text.toString().toInt()+1
-            binding.Guess.setText(newNum.toString())
+        fun increment() {
+            if (binding.Guess.text.toString() != "") {
+                var newNum = binding.Guess.text.toString().toInt() + 1
+                binding.Guess.setText(newNum.toString())
+            }
         }
 
 

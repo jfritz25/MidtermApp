@@ -21,9 +21,9 @@ interface GameDao {
     fun update(score: Score)
     @Delete
     fun delete(score: Score)
-    @Query("SELECT * FROM scores_table WHERE scoreId = :key")
-    fun get(key: Long): LiveData<Score>
-    @Query("SELECT * FROM scores_table ORDER BY scoreId DESC")
+//    @Query("SELECT * FROM scores_table2 WHERE scoreId = :key")
+//    fun get(key: Long): LiveData<Score>
+    @Query("SELECT * FROM scores_table2 ORDER BY score ASC")
     fun getAll(): LiveData<List<Score>>
 
 

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -41,11 +42,6 @@ class HighScoreFragment: Fragment() {
             requireActivity(), viewModelFactory).get(GameViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
 
-        fun backToMain(){
-            val action = HighScoreFragmentDirections.actionHsToMain()
-            findNavController().navigate(action)
-        }
-        binding.BackToMain.setOnClickListener { backToMain() }
 
         fun yesPressed(scoreId : Long) {
             Log.d(TAG, "in yesPressed(): scoreId = $scoreId")
@@ -60,11 +56,29 @@ class HighScoreFragment: Fragment() {
         val adapter = HighScoreAdapter(::deleteClicked)
         binding.hsList.adapter = adapter
 
-        viewModel.allHighscores.observe(viewLifecycleOwner, Observer {
+        viewModel.allHighScores.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }
         })
+        viewModel.allHighScores.observe(viewLifecycleOwner, Observer {
+            if (viewModel.allHighScores.value!!.isEmpty()) {
+                binding.hsList.visibility = View.GONE
+                binding.emptyView.visibility = View.VISIBLE
+            } else {
+                binding.hsList.visibility = View.VISIBLE
+                binding.emptyView.visibility = View.GONE
+            }
+        })
+        fun backToMain(){
+            val action = HighScoreFragmentDirections.actionHsToMain()
+            findNavController().navigate(action)
+        }
+        binding.BackToMain.setOnClickListener { backToMain() }
+
+
+
+
         return view
     }
 }

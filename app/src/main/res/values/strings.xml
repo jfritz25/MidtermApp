@@ -8,4 +8,8 @@
     <string name="view_high_scores">View High Scores</string>
     <string name="player_name">"Player Name: "</string>
     <string name="back_to_main">Back to main</string>
+    <string name="delete_confirmation">Are you sure you want to delete this highscore?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="no_data_available">No highscores yet</string>
 </resources>

@@ -14,7 +14,16 @@ import kotlin.random.Random
 class GameViewModel(dao: GameDao) : ViewModel() {
     val answer = Random.nextInt(1,101)
     var playerName = ""
-    var allHighscores = dao.getAll()
+    var allHighScores: MutableLiveData<List<Score>> = MutableLiveData(emptyList())
+
+
+    init {
+       dao.getAll().observeForever{it ->
+           if(it != null) {
+               allHighScores.postValue(it)
+           }
+        }
+    }
     var guesses = MutableLiveData<Int>().apply { value = 0 }
 
 
@@ -32,7 +41,7 @@ class GameViewModel(dao: GameDao) : ViewModel() {
     fun sendToDB(dao: GameDao){
         val score = Score()
         score.player = playerName
-        score.score = guesses.toString()
+        score.score = guesses.value.toString()
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 dao.insert(score)
@@ -51,6 +60,7 @@ class GameViewModel(dao: GameDao) : ViewModel() {
             }
         }
     }
+
 
 }
 
