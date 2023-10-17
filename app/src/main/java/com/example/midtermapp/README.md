@@ -51,7 +51,7 @@ Here's a walkthrough of a few translations:
 **there was a slight adjustment to the buttons size that was implemented after the video was created and the changes do not alter the performance of the app -> however this changes clossly
 reflects the UI requested in the PDF**
 <br>
-<img src='' title='Project6 Video Walkthrough' width='50%' height = '50%' alt='Video Walkthrough' />
+<img src='https://github.com/jfritz25/MidtermApp/blob/master/app/src/main/java/com/example/midtermapp/AppDemo.gif' title='Midterm Video Walkthrough' width='50%' height = '50%' alt='Video Walkthrough' />
 
 GIF created with [CloudConvert](https://cloudconvert.com/).
 
