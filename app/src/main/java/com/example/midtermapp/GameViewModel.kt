@@ -17,7 +17,7 @@ class GameViewModel(dao: GameDao) : ViewModel() {
      * as well as any database interaction
      */
 
-    val answer = Random.nextInt(1,101)
+    var answer = Random.nextInt(1,101)
     var playerName = ""
     var allHighScores: MutableLiveData<List<Score>> = MutableLiveData(emptyList())
 

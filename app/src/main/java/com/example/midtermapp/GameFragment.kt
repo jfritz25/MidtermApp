@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.midtermapp.databinding.FragmentGameBinding
 import com.example.midtermapp.databinding.FragmentMainBinding
+import kotlin.random.Random
 
 class GameFragment: Fragment() {
     /**
@@ -70,8 +71,10 @@ class GameFragment: Fragment() {
 
                 viewModel.SetName(binding.PlayerName.text.toString())
                 viewModel.sendToDB(dao)
-
-                val action = MainGameFragmentDirections.actionGameToMain(binding.PlayerName.text.toString(), viewModel.guesses.value.toString())
+                val num = viewModel.guesses.value
+                viewModel.guesses.postValue(0)
+                viewModel.answer = Random.nextInt(1,101)
+                val action = MainGameFragmentDirections.actionGameToMain(binding.PlayerName.text.toString(), num.toString())
                 findNavController().navigate(action)
             }
 
